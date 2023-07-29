@@ -10,6 +10,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,6 +46,11 @@ public class LancamentoResource {
 	@Autowired
 	private MessageSource messageSource;
 	
+//	@GetMapping
+//	public List<Lancamento> listar(){
+//		return lancamentoRepository.findAll();
+//	}
+	
 	@GetMapping
 	public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter){
 		return lancamentoRepository.filtrar(lancamentoFilter);
@@ -63,6 +69,16 @@ public class LancamentoResource {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoSalvo);
 		
+	}
+	
+	@DeleteMapping("/{codigo}")
+	public ResponseEntity<Void> remover(@PathVariable Long codigo) {
+		if(!lancamentoRepository.existsById(codigo)) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		lancamentoRepository.deleteById(codigo);
+		return ResponseEntity.noContent().build();
 	}
 	
 	@ExceptionHandler({ PessoaInexistenteOuInativaException.class })

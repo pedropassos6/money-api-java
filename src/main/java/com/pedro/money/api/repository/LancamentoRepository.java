@@ -6,6 +6,8 @@ import com.pedro.money.api.model.Lancamento;
 import com.pedro.money.api.repository.lancamento.LancamentoRepositoryQuery;
 
 
+
 public interface LancamentoRepository extends JpaRepository<Lancamento, Long>, LancamentoRepositoryQuery{
+	
 
 }
