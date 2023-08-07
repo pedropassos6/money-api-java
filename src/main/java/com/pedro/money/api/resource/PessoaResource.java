@@ -3,6 +3,8 @@ package com.pedro.money.api.resource;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -24,9 +26,6 @@ import com.pedro.money.api.event.RecursoCriadoEvent;
 import com.pedro.money.api.model.Pessoa;
 import com.pedro.money.api.repository.PessoaRepository;
 import com.pedro.money.api.service.PessoaService;
-
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/pessoas")

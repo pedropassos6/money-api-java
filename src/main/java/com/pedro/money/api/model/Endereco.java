@@ -1,6 +1,6 @@
 package com.pedro.money.api.model;
 
-import jakarta.persistence.Embeddable;
+import javax.persistence.Embeddable;
 
 @Embeddable
 public class Endereco {
